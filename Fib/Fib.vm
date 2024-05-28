@@ -1,0 +1,32 @@
+// Contains a function Fib.fib that calculates and returns the nth Fibonacci number recursively
+// n is supplied as an argument -> argument 0
+
+function Fib.fib 0
+    push argument 0     //n
+    push constant 2     //2
+    lt                  //check n < 2
+
+if-goto BASE_CASE   //for base case (n < 2), return n
+goto    OTHER_CASE  //otherwise go to all other cases (n > 2)
+
+label BASE_CASE
+    push argument 0
+    return
+
+label OTHER_CASE
+
+    push argument 0 //n on stack
+    push constant 2 //2 on stack
+    sub             //n-2 on stack
+    call Fib.fib 1  //call fib(n-2)
+
+    push argument 0 //n on stack
+    push constant 1 //1 on stack
+    sub             //n-1 on stack
+    call Fib.fib 1  //call fib(n-1)
+
+    add             //add the results of fib(n-2) + fib(n-1)
+    return          
+
+
+//NOTE! we need to allocated more space for testing... -> stack begins at 512... all other memory segments have also been allocated more space accordingly.

@@ -1,0 +1,19 @@
+// Calculates x = (a + b) - x
+// a & b are local variables
+// x is a static variable
+
+//write a program in Hack VM code to calculate x = (a + b) - x
+//where a & b are LOCAL variables (in that order) ...
+    // a -> local 0
+    // b -> local 1
+//x is a static variable 
+    // x -> static 0
+
+push local 0    //a on stack
+push local 1    //b on stack
+add             //a+b now only on stack
+push static 0   //x above a+b on stack
+sub
+pop static 0    //x = (a+b)-x
+label END
+goto END

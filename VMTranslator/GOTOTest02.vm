@@ -1,0 +1,9 @@
+//testing goto function
+label MAKE_ONE
+
+    push constant 1
+    pop local 0
+    goto FINISH
+
+label ENDING
+    goto ENDING

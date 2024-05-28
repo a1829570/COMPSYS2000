@@ -1,0 +1,10 @@
+//testing label function
+label TESTING
+    push constant 2
+    push constant 10
+    add
+    pop local 0
+label SUBTRACT
+    push local 0
+    sub
+    pop local 0

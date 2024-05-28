@@ -1,0 +1,14 @@
+//if testing
+label increment
+    push local 0
+    push constant 1
+    add
+    pop local 0
+    push local 0
+    push constant 5
+    eq
+    if-goto end
+    goto increment
+
+label end
+    goto end

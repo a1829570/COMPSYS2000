@@ -1,0 +1,4 @@
+//vm_sub test
+push constant 15   
+push constant 32000   
+sub

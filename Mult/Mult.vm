@@ -1,0 +1,87 @@
+// Calculates a = x * y
+// a is a local variable
+// x & y are static variables
+
+// use repeated addition 
+
+// pseudocode:
+// pop 0 into curr_sum
+// pop y into counter
+// loop until counter eq 0 -> if so, goto end
+// otherwise...
+// push curr_sum
+// push x
+// add
+// pop sum
+// subtract 1 from counter 
+// loop through again
+
+// use sum and counter as local variables 1 and 2 (because 0 is reserved for a) -> these are to be initialized to 0
+push constant 0   // Initialize sum to 0
+pop local 1       // local 1 is sum
+
+push constant 0   // Initialize counter to 0
+pop local 2       // local 2 is counter
+
+push constant 0   // Initialize 'sign' to false
+pop local 3       // local 3 is the sign of the counter variable
+
+// check if y is less than 0 -> if so, goto NEGATIVE_COUNTER -> make positive and continue, otherwise continue as normal.
+push static 1     // y
+push constant 0   // 0
+lt                // check if y < 0
+
+if-goto NEGATIVE_COUNTER
+
+push static 1     // y
+pop local 2       // counter = y
+goto LOOP
+
+label LOOP
+    // First check if loop should end
+    push local 2
+    push constant 0
+    eq              // True if counter = 0
+    if-goto FINISH
+
+    // Otherwise, add x to sum
+    push local 1    // sum
+    push static 0   // x
+    add             // sum + x (top of stack)
+    pop local 1
+
+    // Decrement counter
+    push local 2
+    push constant 1
+    sub
+    pop local 2
+    goto LOOP
+
+label FINISH
+    push local 3        // put sign onto stack (true or false)
+    push constant 1
+    eq
+    if-goto CHANGE_SIGN
+    push local 1    // sum
+    pop local 0     // a = repeated sum
+    goto END
+
+label END
+    goto END
+    // program ends here
+
+label NEGATIVE_COUNTER // Make value of counter absolute
+    push static 1      // push y onto stack
+    neg                // make y = -y (now y is positive)
+    pop local 2        // pop the result back onto the counter variable
+
+    push constant 1     // push 1 onto the stack
+    pop local 3         // assign the 'sign' to be true (i.e., true that y is negative)
+
+    goto LOOP
+
+label CHANGE_SIGN
+    push local 1
+    neg
+    pop local 0
+    goto END

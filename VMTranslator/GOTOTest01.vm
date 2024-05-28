@@ -1,0 +1,8 @@
+//testing goto function
+label LOOP
+    push constant 1
+    pop local 0
+    goto FINISH
+
+label FINISH
+    goto FINISH

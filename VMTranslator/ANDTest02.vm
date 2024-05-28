@@ -1,0 +1,4 @@
+//testing false condition for and
+push constant 0
+push constant 1
+and

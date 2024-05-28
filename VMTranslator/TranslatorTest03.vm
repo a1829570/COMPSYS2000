@@ -1,0 +1,9 @@
+//testing static and local memory access + sub and add commands
+push constant 42
+push static 0
+add
+pop local 0
+push constant 10
+push local 0
+sub
+pop static 1

@@ -1,0 +1,4 @@
+//check for false condition
+push constant 2
+push constant 0
+eq

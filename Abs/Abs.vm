@@ -1,0 +1,25 @@
+// Calculates y = |x|
+// x & y are static variables
+
+//x: static 0
+//y: static 1
+
+    push static 0       //x
+    push constant 0     //0
+    lt                  // x < 0?
+    if-goto is_negative //if x < 0
+    goto is_positive    // x > 0
+
+label is_negative
+    push static 0
+    neg
+    pop static 1
+    goto END
+    
+label is_positive
+    push static 0
+    pop static 1
+    goto END
+
+label END
+    goto END

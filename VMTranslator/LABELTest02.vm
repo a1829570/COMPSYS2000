@@ -1,0 +1,14 @@
+//testing label function
+label LOOP
+
+    push local 0
+    push constant 1
+    add
+
+label SUBTRACT
+
+    push local 0
+    sub
+    pop local 0
+
+label END

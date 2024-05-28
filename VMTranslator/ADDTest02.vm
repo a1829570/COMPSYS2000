@@ -1,0 +1,4 @@
+//vm_add test
+push constant 15   
+push constant 32000   
+add

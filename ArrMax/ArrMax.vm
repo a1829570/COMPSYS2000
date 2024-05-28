@@ -1,0 +1,68 @@
+// Contains a function ArrMax.arrMax that finds and returns the largest element in the array a of length b.
+// a & b are both supplied as arguments
+
+//pseudocode:
+// initialise local variable counter to be set to b (we will use this to count how many array elements have been accessed)
+// for each loop:
+// if counter < 0 ... break from loop and return current maximum value 
+
+//variable assignments:
+    
+    //local 0 = counter (initialise to 0 of array)
+    //static 0 = curr_max (initialised to first element in the array)
+    
+    //argument 0 = pointer to array
+    //argument 1 = length of array
+
+//----
+
+function ArrMax.arrMax 2
+    //set counter to n -> will be decremented
+    push argument 1
+    pop local 0
+
+    //set curr_max to 0
+    push constant 0
+    pop static 0    // static 0 = max, initialize it to 0
+
+    //initialise pointer to access the first element in the array -> this pointer will be incremented
+    push argument 0
+    pop pointer 1
+
+label LOOP_START
+    //check if counter is == 0
+    push local 0
+    push constant 0
+    eq
+    if-goto LOOP_END    // if counter = 0, end loop
+    
+    //push the element on the array that is being currently pointed to
+    push that 1     //curr element
+    push static 0   //curr max
+    gt
+    if-goto UPDATE_MAX //if curr element > curr max, curr element == curr_max
+
+    //decrement counter
+    push local 0
+    push constant 1
+    sub
+    pop local 0
+
+    //increment pointer by one
+    push pointer 1
+    push constant 1
+    add
+    pop pointer 1
+
+    goto LOOP_START
+
+label UPDATE_MAX
+
+    push that 0
+    pop static 0
+    goto LOOP_START
+    
+label LOOP_END
+    push static 0
+    return
+

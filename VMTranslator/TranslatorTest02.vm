@@ -1,0 +1,10 @@
+//test add sub and neg + memory access
+push constant 7
+push constant 3
+add
+push constant 4
+sub
+pop local 0
+push local 0
+neg
+pop temp 0
